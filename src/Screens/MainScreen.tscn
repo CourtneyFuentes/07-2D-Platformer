@@ -1,0 +1,134 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/mainbackground.jpg" type="Texture" id=2]
+[ext_resource path="res://src/UserInterface/Title.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UserInterface/SceneChangeButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/LoadButton.gd" type="Script" id=6]
+[ext_resource path="res://assets/arguing dog.wav" type="AudioStream" id=7]
+
+[sub_resource type="ImageTexture" id=1]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.45098, 0.52549, 0.309804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.729412, 0.439216, 0.505882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.184314, 0.321569, 0.164706, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.45098, 0.52549, 0.309804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.729412, 0.439216, 0.505882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.184314, 0.321569, 0.164706, 1 )
+
+[node name="MainScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mainbackground" type="Sprite" parent="TextureRect"]
+position = Vector2( 414.741, 488.809 )
+scale = Vector2( 0.714288, 0.717926 )
+texture = ExtResource( 2 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2424.66
+margin_top = 898.763
+margin_right = 2453.66
+margin_bottom = 898.763
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blackbackground" type="Sprite" parent="TextureRect2"]
+position = Vector2( -1017.26, 472.476 )
+scale = Vector2( 0.577625, 1422.31 )
+texture = SubResource( 3 )
+
+[node name="Title" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 119.123
+margin_top = -257.889
+margin_right = 633.123
+margin_bottom = -87.8887
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.695
+anchor_top = 0.508
+anchor_right = 0.695
+anchor_bottom = 0.508
+margin_left = -180.795
+margin_top = -77.2958
+margin_right = 179.205
+margin_bottom = 76.7042
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" parent="Menu" instance=ExtResource( 4 )]
+material = SubResource( 4 )
+margin_right = 360.0
+margin_bottom = 46.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Play"
+next_scene_path = "res://src/Levels/Level01.tscn"
+
+[node name="LoadButton" parent="Menu" instance=ExtResource( 5 )]
+margin_top = 54.0
+margin_right = 360.0
+margin_bottom = 100.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+text = "Load"
+script = ExtResource( 6 )
+
+[node name="QuitButton" parent="Menu" instance=ExtResource( 5 )]
+margin_top = 108.0
+margin_right = 360.0
+margin_bottom = 154.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
