@@ -1,46 +1,134 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://src/Actors/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/chocolatemonster.png" type="Texture" id=2]
+[ext_resource path="res://src/UserInterface/SceneChangeButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/UserInterface/Title.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/mainbackground.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/arguing dog.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=6]
+[ext_resource path="res://src/LoadButton.gd" type="Script" id=7]
 
-[sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -0.0765228, 46.5714, -22.833, 46.189, -38.1315, 42.7468, -47.8843, 35.48, -52.8564, 27.0658, -54.5774, 18.2692, -54.0037, 5.07425, -48.6493, -13.0927, -35.8368, -32.0246, -20.9207, -43.116, -7.53454, -47.5144, 0.114708, -47.8968, 10.25, -46.9407, 21.5326, -42.3511, 32.624, -34.1282, 44.8628, -20.5507, 52.8945, -2.00131, 54.6156, 11.3849, 54.8069, 19.2254, 52.7033, 27.4483, 46.0102, 37.5836, 35.6837, 43.3205, 22.2975, 46.3802 )
+[sub_resource type="ImageTexture" id=1]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 40, 34 )
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 40, 10.5328 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[node name="Enemy" type="KinematicBody2D"]
-collision_layer = 2
-collision_mask = 4
-script = ExtResource( 1 )
+[sub_resource type="CanvasItemMaterial" id=4]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -44.9277 )
-scale = Vector2( 0.07, 0.07 )
-texture = ExtResource( 2 )
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.45098, 0.52549, 0.309804, 1 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
-occluder = SubResource( 1 )
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.729412, 0.439216, 0.505882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4, -45 )
-shape = SubResource( 2 )
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.184314, 0.321569, 0.164706, 1 )
 
-[node name="StompArea2D" type="Area2D" parent="."]
-position = Vector2( 0, -66.4549 )
-collision_layer = 2
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.45098, 0.52549, 0.309804, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea2D"]
-position = Vector2( 0, -4.93669 )
-shape = SubResource( 3 )
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.729412, 0.439216, 0.505882, 1 )
 
-[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-position = Vector2( 2, -46 )
-scale = Vector2( 0.7, 1.09091 )
-rect = Rect2( -50, -33, 100, 66 )
-process_parent = true
-physics_process_parent = true
-[connection signal="area_entered" from="StompArea2D" to="." method="_on_StompArea2D_area_entered"]
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.184314, 0.321569, 0.164706, 1 )
+
+[node name="MainScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mainbackground" type="Sprite" parent="TextureRect"]
+position = Vector2( 414.741, 488.809 )
+scale = Vector2( 0.714288, 0.717926 )
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2424.66
+margin_top = 898.763
+margin_right = 2453.66
+margin_bottom = 898.763
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blackbackground" type="Sprite" parent="TextureRect2"]
+position = Vector2( -1017.26, 472.476 )
+scale = Vector2( 0.577625, 1422.31 )
+texture = SubResource( 3 )
+
+[node name="Title" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 119.123
+margin_top = -257.889
+margin_right = 633.123
+margin_bottom = -87.8887
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.695
+anchor_top = 0.508
+anchor_right = 0.695
+anchor_bottom = 0.508
+margin_left = -180.795
+margin_top = -77.2958
+margin_right = 179.205
+margin_bottom = 76.7042
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" parent="Menu" instance=ExtResource( 1 )]
+material = SubResource( 4 )
+margin_right = 360.0
+margin_bottom = 46.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Play"
+next_scene_path = "res://src/Levels/Level01.tscn"
+
+[node name="LoadButton" parent="Menu" instance=ExtResource( 3 )]
+margin_top = 54.0
+margin_right = 360.0
+margin_bottom = 100.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+text = "Load"
+script = ExtResource( 7 )
+
+[node name="QuitButton" parent="Menu" instance=ExtResource( 3 )]
+margin_top = 108.0
+margin_right = 360.0
+margin_bottom = 154.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true

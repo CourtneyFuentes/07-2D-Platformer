@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=3]
@@ -9,7 +9,6 @@
 [ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/layer-1.png" type="Texture" id=9]
 [ext_resource path="res://assets/Tennisball.png" type="Texture" id=10]
-[ext_resource path="res://src/Save.gd" type="Script" id=11]
 [ext_resource path="res://assets/Dreaming.ogg" type="AudioStream" id=12]
 
 [sub_resource type="StreamTexture" id=1]
@@ -154,17 +153,6 @@ position = Vector2( 6970, 230 )
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 8 )]
 position = Vector2( 7020, 800 )
-
-[node name="Button" type="Button" parent="."]
-margin_left = 84.1637
-margin_top = 856.474
-margin_right = 175.164
-margin_bottom = 890.474
-text = "Save"
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
