@@ -1,5 +1,7 @@
-extends Node
+extends Button
 
-func loadValue(PlayerData.score, PlayerData.deaths):
-	else:
-		printerr("No saved data!")
+var save_path = "res://save-file.cfg"
+var config = ConfigFile.new()
+
+var load_response = config.load(save_path)
+
