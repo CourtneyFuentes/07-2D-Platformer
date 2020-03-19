@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://src/Levels/Level01.gd" type="Script" id=1]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=4]
@@ -16,6 +17,7 @@ flags = 4
 load_path = "res://.import/background.png-1fdba8b6a966ce2c2ffc607f7c096e95.stex"
 
 [node name="Level01" type="Node2D"]
+script = ExtResource( 1 )
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1

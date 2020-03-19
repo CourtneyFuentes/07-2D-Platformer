@@ -36,3 +36,7 @@ func set_paused(value: bool) -> void:
 	paused = value
 	scene_tree.paused = value
 	pause_overlay.visible = value
+
+
+func _on_Save_Button_button_up():
+	PlayerData.save_data()
